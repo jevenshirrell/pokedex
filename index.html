@@ -3,11 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Trading Card Gallery</title>
+    <title>POKÉMON CARD GENERATOR</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="shortcut icon" href="./images/favicon/favicon.ico" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @font-face {
+            font-family: "Geist";
+            src: url("./css/Geist[wght].ttf");
+        }
+        @theme {
+            --default-font-family: "Geist";
+        }
+
+        .link {
+            @apply text-xl hover:underline
+        }
+    </style>
 </head>
-<body>
+<body class="font-medium uppercase bg-red-50 flex flex-col items-center">
+    <header class="flex bg-red-500 p-2.5 justify-between text-red-50 w-full mb-10">
+        <div class="flex justify-center items-center gap-1">
+            <img src="./images/favicon/android-chrome-192x192.png" alt="icon" class="h-15">
+            <h1 class="font-bold text-4xl">Pokémon Card Generator</h1>
+        </div>
+        <nav class="flex justify-center items-center gap-5">
+            <a href="#" class="link">Home</a>
+            <a href="#" class="link">Saved Cards</a>
+            <a href="#" class="link">Other</a>
+        </nav>
+    </header>
+    <main class="flex p-5 gap-5 w-8/10">
+        <section class="flex w-auto">
+            <div class="rounded-[46px] bg-gray-500 p-7.5 w-[500px] flex flex-col gap-5">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-3xl font-bold">Name</h2>
+                    <div class="flex gap-1 items-center justify-end">
+                        <h2 class="text-3xl">HP 100</h2>
+                        <img class="h-10" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/small/9.png" alt="type">
+                    </div>
+                </div>
+                <div class="">
+                    <img class="h-75 w-full object-cover rounded-2xl" src="https://www.svgrepo.com/show/508699/landscape-placeholder.svg" alt="pokemon image">
+                </div>
+                <div class="flex flex-col gap-5 items-center">
+                    <div class="move w-8/10">
+                        <div class="flex justify-between">
+                            <h4 class="font-bold text-xl">Move name</h4>
+                            <h4 class="font-bold text-xl">100</h4>
+                        </div>
+                        <p class="text-med">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita itaque repudiandae rerum.</p>
+                    </div>
+                    <div class="move w-8/10">
+                        <div class="flex justify-between">
+                            <h4 class="font-bold text-xl">Move name</h4>
+                            <h4 class="font-bold text-xl">100</h4>
+                        </div>
+                        <p class="text-med">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita itaque repudiandae rerum.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="flex flex-col items-center justify-center w-full gap-2.5">
+            <h2 class="text-2xl font-bold">POKEMON</h2>
+            <img class="h-75" src="https://www.svgrepo.com/show/508699/landscape-placeholder.svg" alt="pokemon image">
+            <input class="border-red-500 border-4 text-xl w-full p-2 rounded-2xl outline-0" type="text" placeholder="DITTO">
+            <button class="font-bold bg-red-500 p-6 text-3xl rounded-2xl text-red-50 hover:bg-red-600 hover:cursor-pointer">GENERATE CARD</button>
+        </section>
+    </main>
+    <footer class="bg-red-500 p-4 w-full flex text-red-50 gap-4 justify-between mt-20">
+        <div class="flex items-center relative">
+            <img class="h-40" src="./images/favicon/android-chrome-192x192.png" alt="Logo">
+            <h2 class="w-min font-bold text-4xl">POKÉMON CARD GENERATOR</h2>
+        </div>
+        <ul class="">
+            <li class="font-bold text-2xl">Pages</li>
+            <li><a href="#" class="link">Home</a></li>
+            <li><a href="#" class="link">Saved Cards</a></li>
+            <li><a href="#" class="link">Other</a></li>
+        </ul>
+        <ul>
+            <li class="font-bold text-2xl">Jeven Shirrell</li>
+            <li><a href="https://jevenshirrell.github.io/portfolio/" class="link" target="_blank">Portfolio</a></li>
+            <li><a href="https://github.com/jevenshirrell" class="link" target="_blank">Github</a></li>
+        </ul>
+        <p class="w-min text-right font-bold text-2xl self-center">&copy; Jeven Shirrell 2026</p>
+    </footer>
 
     <script src="./js/app.js"></script>
 </body>
