@@ -1,4 +1,3 @@
-
 # Pokémon Card Generator
 
 A website that uses the PokéAPI to generate and save cards
@@ -18,6 +17,8 @@ A website that uses the PokéAPI to generate and save cards
 **Client:** HTML, Tailwind, CSS, Jquery, JS
 
 **API:** [PokéAPI](https://pokeapi.co/)
+
+
 ## Screenshots
 
 ![App Screenshot](./images/screenshots/Screenshot%202026-08-15%20002245.png)
@@ -28,6 +29,7 @@ A website that uses the PokéAPI to generate and save cards
 
 - Generate cards with # or name
 - Save cards to view later
+- Filter saved cards by type
 - Reactive page
 
 
@@ -37,13 +39,20 @@ A website that uses the PokéAPI to generate and save cards
 - Validating requests
 - Limiting open saved card to one
 - Learning Tailwind classes
+
+
 ## Future Plans
 
 - Improve design system to be more standardized
 - Optimize JS/Jquery
 - Additional features
-    - TODO
+    - Extra options for cards
+    - Dual types
+    - Card animations
+
+
 ## Skills Learned
+
 - Tailwind styles
 - Tailwind themes
 - API data requests

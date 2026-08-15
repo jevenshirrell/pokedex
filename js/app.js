@@ -1,4 +1,3 @@
-
 //vars
 const typeColors = {
     normal:"gray",
@@ -143,6 +142,9 @@ const updateSaved = () => {
     $('#savedWrapper').html('')
     savedCards.forEach(card => {
         $('#savedWrapper').append(newSavedThumb(card.sprite, card.color))
+        if ($('#filter').val() != 'none' && card.color != typeColors[$('#filter').val()]) {
+            $('#savedWrapper').children().last().remove()
+        }
     })
     return
 }
@@ -179,6 +181,9 @@ const delCard = idx => {
     $('#savedWrapper').children()[idx].remove()
     return
 }
+
+// filter
+$('#filter').on('change', updateSaved)
 
 // Open/close
 $(() => {
