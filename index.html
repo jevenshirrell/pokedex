@@ -48,8 +48,8 @@
             <a href="#" class="link">Home</a>
             <a href="#savedCards" class="link w-max">Saved Cards</a>        </nav>
     </header>
-    <main class="flex p-5 gap-5 w-8/10 md:flex-col">
-        <section id="card" class="relative flex w-225 rounded-[46px] bg-gray-500 p-7.5 min-h-150">
+    <main class="flex p-5 gap-5 w-8/10 max-md:flex-col max-sm:w-19/20">
+        <section id="card" class="relative flex w-225 rounded-[46px] bg-gray-500 p-7.5 min-h-150 max-md:order-2 max-md:w-full">
             <div id="loading" class="inset-0 z-1 absolute hidden justify-center items-center bg-gray-400 rounded-[46px]">
                 <img src="./images/loading.gif" alt="Loading...">
             </div>
@@ -76,35 +76,37 @@
                 </div>
             </div>
         </section>
-        <section class="flex flex-col items-center justify-center w-full gap-2.5">
+        <section class="flex flex-col items-center justify-center w-full gap-2.5 max-md:order-1">
             <h2 class="text-2xl font-bold hidden">POKEMON</h2>
             <img class="h-75 hidden" src="https://www.svgrepo.com/show/508699/landscape-placeholder.svg" alt="pokemon image">
-            <input id="pmInput" class="border-red-500 border-4 text-xl w-full p-2 rounded-2xl outline-0" type="text" placeholder="DITTO">
+            <input id="pmInput" class="border-red-500 border-4 text-xl w-full p-2 rounded-2xl outline-0" type="text" placeholder="NAME/NUMBER">
             <button id="genBtn" class="btn" onclick="generate()">GENERATE CARD</button>
             <button id="saveBtn" class="btn text-xl! p-4! hidden" onclick="saveCard(currentCard)">SAVE CARD</button>
         </section>
     </main>
-    <section class="w-8/10 p-5 flex flex-col gap-5" id="savedCards">
-        <h2 class="text-4xl font-bold">Saved Cards</h2>
+    <section class="w-8/10 p-5 flex flex-col gap-5 max-sm:w-19/20" id="savedCards">
+        <h2 class="text-4xl font-bold w-full max-md:text-center">Saved Cards</h2>
         <div class="w-full flex flex-wrap gap-5 items-start" id="savedWrapper">
         </div>
     </section>
-    <footer class="bg-red-500 p-4 w-full flex text-red-50 gap-4 justify-between mt-20">
-        <div class="flex items-center relative">
+    <footer class="bg-red-500 p-4 w-full flex text-red-50 gap-4 justify-between mt-20 max-md:flex-col max-md:items-center">
+        <div class="flex items-center w-max shrink-0">
             <img class="h-40" src="./images/favicon/android-chrome-192x192.png" alt="Logo">
             <h2 class="w-min font-bold text-4xl">POKÉMON CARD GENERATOR</h2>
         </div>
-        <ul class="">
-            <li class="font-bold text-2xl">Pages</li>
-            <li><a href="#" class="link">Home</a></li>
-            <li><a href="#savedCards" class="link">Saved Cards</a></li>
-        </ul>
-        <ul>
-            <li class="font-bold text-2xl">Jeven Shirrell</li>
-            <li><a href="https://jevenshirrell.github.io/portfolio/" class="link" target="_blank">Portfolio</a></li>
-            <li><a href="https://github.com/jevenshirrell" class="link" target="_blank">Github</a></li>
-        </ul>
-        <p class="w-min text-right font-bold text-2xl self-center">&copy; Jeven Shirrell 2026</p>
+        <div class="flex justify-evenly w-full">
+            <ul>
+                <li class="font-bold text-2xl">Pages</li>
+                <li><a href="#" class="link">Home</a></li>
+                <li><a href="#savedCards" class="link">Saved Cards</a></li>
+            </ul>
+            <ul>
+                <li class="font-bold text-2xl">Jeven Shirrell</li>
+                <li><a href="https://jevenshirrell.github.io/portfolio/" class="link" target="_blank">Portfolio</a></li>
+                <li><a href="https://github.com/jevenshirrell" class="link" target="_blank">Github</a></li>
+            </ul>
+        </div>
+        <p class="w-min text-right font-bold text-2xl self-center max-md:w-full max-md:text-center">&copy; Jeven Shirrell 2026</p>
     </footer>
 
     <script src="./js/app.js"></script>

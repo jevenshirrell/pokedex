@@ -1,3 +1,5 @@
+
+//vars
 const typeColors = {
     normal:"gray",
     fighting:"orange",
@@ -152,12 +154,18 @@ const newSavedThumb = (sprite, color) => {
 }
 
 $('#savedWrapper').on('click', '.savedCard', function () {
-    $('#savedWrapper').children().each(function () {
-        $(this).children('button').remove()
-    })
+    let el = this
+    
     if ($(this).children().length == 1) {
         $(this).append(`<button class="btn" onclick="openCard(${$(this).index()})">OPEN</button><button class="btn" onclick="delCard(${$(this).index()})">DELETE</button>`)
+    } else {
+        el = null
     }
+    $('#savedWrapper').children().each(function () {
+        if (this != el) {
+            $(this).children('button').remove()
+        }
+    })
 })
 
 const openCard = idx => {
