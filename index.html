@@ -20,6 +20,22 @@
         .link {
             @apply text-xl hover:underline
         }
+        .btn {
+            @apply font-bold bg-red-500 p-6 text-3xl rounded-2xl text-red-50 hover:bg-red-600 hover:cursor-pointer
+        }
+
+        .savedCard {
+            @apply min-w-35 min-h-35 rounded-4xl hover:cursor-pointer p-4 flex justify-start items-center flex-col gap-2 select-none relative
+        }
+        .savedCard img {
+            @apply mt-2
+        }
+        .savedCard * {
+            @apply rounded-2xl!
+        }
+        .savedCard .btn {
+            @apply p-2 text-xl
+        }
     </style>
 </head>
 <body class="font-medium uppercase bg-red-50 flex flex-col items-center">
@@ -30,48 +46,49 @@
         </div>
         <nav class="flex justify-center items-center gap-5">
             <a href="#" class="link">Home</a>
-            <a href="#" class="link">Saved Cards</a>
-            <a href="#" class="link">Other</a>
-        </nav>
+            <a href="#savedCards" class="link w-max">Saved Cards</a>        </nav>
     </header>
-    <main class="flex p-5 gap-5 w-8/10">
-        <section class="flex w-auto">
-            <div class="rounded-[46px] bg-gray-500 p-7.5 w-[500px] flex flex-col gap-5">
+    <main class="flex p-5 gap-5 w-8/10 md:flex-col">
+        <section id="card" class="relative flex w-225 rounded-[46px] bg-gray-500 p-7.5 min-h-150">
+            <div id="loading" class="inset-0 z-1 absolute hidden justify-center items-center bg-gray-400 rounded-[46px]">
+                <img src="./images/loading.gif" alt="Loading...">
+            </div>
+            <div class="flex flex-col gap-5 w-full">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-3xl font-bold">Name</h2>
+                    <div class="flex gap-1.5">
+                        <h2 class="text-3xl font-bold" id="cardName">Name</h2>
+                        <p class="font-semibold" id="cardNum">#123</p>
+                    </div>
                     <div class="flex gap-1 items-center justify-end">
-                        <h2 class="text-3xl">HP 100</h2>
-                        <img class="h-10" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/small/9.png" alt="type">
+                        <h2 class="text-3xl" id="cardHP">HP 100</h2>
+                        <img class="h-10" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/small/1.png" alt="type" id="cardType">
                     </div>
                 </div>
                 <div class="">
-                    <img class="h-75 w-full object-cover rounded-2xl" src="https://www.svgrepo.com/show/508699/landscape-placeholder.svg" alt="pokemon image">
+                    <img class="h-75 w-full object-cover rounded-2xl [image-rendering:pixelated]" src="https://www.svgrepo.com/show/508699/landscape-placeholder.svg" alt="pokemon image" id="cardImg">
                 </div>
-                <div class="flex flex-col gap-5 items-center">
-                    <div class="move w-8/10">
-                        <div class="flex justify-between">
-                            <h4 class="font-bold text-xl">Move name</h4>
-                            <h4 class="font-bold text-xl">100</h4>
-                        </div>
-                        <p class="text-med">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita itaque repudiandae rerum.</p>
-                    </div>
-                    <div class="move w-8/10">
-                        <div class="flex justify-between">
-                            <h4 class="font-bold text-xl">Move name</h4>
-                            <h4 class="font-bold text-xl">100</h4>
-                        </div>
-                        <p class="text-med">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita itaque repudiandae rerum.</p>
-                    </div>
+                <div class="flex justify-between">
+                    <p class="font-semibold">Height: <span id="cardHeight"></span></p>
+                    <p class="font-semibold">Weight: <span id="cardWeight"></span></p>
+                    <p class="font-semibold">XP: <span id="cardXP"></span></p>
+                </div>
+                <div class="flex flex-col gap-5 items-center min-h-50" id="moveContainer">
                 </div>
             </div>
         </section>
         <section class="flex flex-col items-center justify-center w-full gap-2.5">
-            <h2 class="text-2xl font-bold">POKEMON</h2>
-            <img class="h-75" src="https://www.svgrepo.com/show/508699/landscape-placeholder.svg" alt="pokemon image">
-            <input class="border-red-500 border-4 text-xl w-full p-2 rounded-2xl outline-0" type="text" placeholder="DITTO">
-            <button class="font-bold bg-red-500 p-6 text-3xl rounded-2xl text-red-50 hover:bg-red-600 hover:cursor-pointer">GENERATE CARD</button>
+            <h2 class="text-2xl font-bold hidden">POKEMON</h2>
+            <img class="h-75 hidden" src="https://www.svgrepo.com/show/508699/landscape-placeholder.svg" alt="pokemon image">
+            <input id="pmInput" class="border-red-500 border-4 text-xl w-full p-2 rounded-2xl outline-0" type="text" placeholder="DITTO">
+            <button id="genBtn" class="btn" onclick="generate()">GENERATE CARD</button>
+            <button id="saveBtn" class="btn text-xl! p-4! hidden" onclick="saveCard(currentCard)">SAVE CARD</button>
         </section>
     </main>
+    <section class="w-8/10 p-5 flex flex-col gap-5" id="savedCards">
+        <h2 class="text-4xl font-bold">Saved Cards</h2>
+        <div class="w-full flex flex-wrap gap-5 items-start" id="savedWrapper">
+        </div>
+    </section>
     <footer class="bg-red-500 p-4 w-full flex text-red-50 gap-4 justify-between mt-20">
         <div class="flex items-center relative">
             <img class="h-40" src="./images/favicon/android-chrome-192x192.png" alt="Logo">
@@ -80,8 +97,7 @@
         <ul class="">
             <li class="font-bold text-2xl">Pages</li>
             <li><a href="#" class="link">Home</a></li>
-            <li><a href="#" class="link">Saved Cards</a></li>
-            <li><a href="#" class="link">Other</a></li>
+            <li><a href="#savedCards" class="link">Saved Cards</a></li>
         </ul>
         <ul>
             <li class="font-bold text-2xl">Jeven Shirrell</li>
