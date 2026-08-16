@@ -143,7 +143,7 @@ const updateSaved = () => {
     savedCards.forEach(card => {
         $('#savedWrapper').append(newSavedThumb(card.sprite, card.color))
         if ($('#filter').val() != 'none' && card.color != typeColors[$('#filter').val()]) {
-            $('#savedWrapper').children().last().remove()
+            $('#savedWrapper').children().last().addClass('hidden!')
         }
     })
     return
